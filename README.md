@@ -1,2 +1,3 @@
-from keyle carlson at Kauffman Center at kc
+from kyle carlson at Kauffman Center at kc
+thekylecarlson@gmail.com
 
