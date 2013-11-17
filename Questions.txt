@@ -1,3 +1,94 @@
 1. Can we change the data directly from database?
 2. How to embed generated views to our own HTML files?
 3. Is it possible to run https
+4. run different database in differnt development enviroment. 
+5. how to embed generated views to user's html files?
+6. when to run rake db:migrate
+7. resources :XXX   <-> CRUD
+	
+  after you configure resources :xxx at routes file, you can do
+  "rake routes" at project folder to see allthe REST routes
+  But there is still NO controller to show views for its routes
+
+
+	          Prefix Verb   URI Pattern                Controller#Action
+  welcome_index GET    /welcome/index(.:format)   welcome#index
+welcome_contact GET    /welcome/contact(.:format) welcome#contact
+           root GET    /                          welcome#index
+          posts GET    /posts(.:format)           posts#index
+                POST   /posts(.:format)           posts#create
+       new_post GET    /posts/new(.:format)       posts#new
+      edit_post GET    /posts/:id/edit(.:format)  posts#edit
+           post GET    /posts/:id(.:format)       posts#show
+                PATCH  /posts/:id(.:format)       posts#update
+                PUT    /posts/:id(.:format)       posts#update
+                DELETE /posts/:id(.:format)       posts#destroy
+9. HTML request methods
+  http://www.w3schools.com/tags/ref_httpmethods.asp
+
+10. Modes in RoR use a singular name, and their correspongding db tables use a plural name
+
+  $ rails g model Post filed1:type filed2:type
+  This will create a post model under /app/model/post.rb
+  and a datebase creation file under /db/migrate
+
+  But at this time, you HAVE NOT create a table YET! you need to run rake command to do this. 
+
+  $ rake db:migrate
+
+
+11. This will reset your database and reload your current schema with all.
+      rake db:reset
+      rake db:migrate
+
+    This will destroy your db and then create it and then migrate your current schema.
+        rake db:drop
+        rake db:create
+        rake db:migrate
+12. render VS redirect_to
+    render is done within the same request as the form submissoion
+    redirect_to will tell the browser to issue another request
+
+13. 
+  $ rails d model name 
+
+  This just deletes the model and not the migration you have run (which created the table in the database).
+
+  If you want to delete both the model and the tables, you will have to do the following
+
+  $rake db:rollback 
+  $rake d model name
+
+14. rails 4.0 you dont have to add index mannual, its automatically added when you create your model
+
+15. $ bundle install --without production
+
+    group :production do
+      gem 'pg', '0.15.1'
+      gem 'rails_12factor', '0.0.2'
+    end
+
+    The --without production option prevents the local installation of any production gems, which in this case consists of pg and rails_12factor. (If Bundler complains about a readline error, try adding gem 'rb-read\-line', '~> 0.4.2' to your Gemfile.) Because the only gems we’ve added are restricted to a production environment, right now this command doesn’t actually install any additional local gems, but it’s needed to update Gemfile.lock with the pg and rails_12factor gems and the specific Ruby version. We can commit the resulting change as follows:
+
+    $ git commit -a -m "Update Gemfile.lock for Heroku"
+
+
+******************************************************
+Models
+******************************************************
+1. naming convention
+    Model Class - Singular with the first letter of each word capitalized (e.g., BookClub)
+    Database Table - Plural with underscores separating words (e.g., book_clubs)
+2. shema conventions
+    Foreign key
+      singularized_table_name_id (e.g., item_id, order_id). 
+    primary key
+       By default, Active Record will use an integer column named id as the table's primary key. When using Rails Migrations to create your tables, this column will be automatically created.
+
+
+
+
+
+Notes
+1. git log -3
+

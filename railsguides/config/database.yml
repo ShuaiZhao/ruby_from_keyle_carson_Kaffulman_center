@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: umkc_development
+  database: railsguide
   pool: 5
   username: umkcdcrg01
   password: .UMKCdcrg01.
@@ -44,7 +44,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: umkc_development
+  database: railsguide
   pool: 5
   username: umkcdcrg01
   password: .UMKCdcrg01.
@@ -52,7 +52,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: umkc_production
+  database: railsguide
   pool: 5
-  username: 
-  password: 
+  username: umkcdcrg01
+  password: .UMKCdcrg01.
